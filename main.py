@@ -2,6 +2,9 @@ import subprocess
 from bs4 import BeautifulSoup
 import csv
 
+tg_links_input = "./tg_links.csv"
+tg_links_output = "./tg_links_with_members.csv"
+
 def getMembersCount(url, csv_file_path):
     curl_command = "curl -L {url}".format(url=url)
     output = subprocess.run(curl_command, shell=True, capture_output=True, text=True)
@@ -25,7 +28,7 @@ def process_links_from_csv(csv_file_path):
         for row in csv_reader:
             link = row[0]
             print(link)
-            getMembersCount(link, "./tg_links_with_members.csv")
+            getMembersCount(link, tg_links_output)
 
 
-process_links_from_csv("./tg_links.csv")
+process_links_from_csv(tg_links_input)
