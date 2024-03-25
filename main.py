@@ -18,7 +18,7 @@ def getMembersCount(url, csv_file_path):
     if members_count_element:
         members_count = members_count_element.text.strip()
         csv_writer.writerow([url, members_count])
-        print("Members Count:", members_count)
+        print([url, "Members Count:", members_count])
     else:
         print("Members count not found.")
 
@@ -27,7 +27,6 @@ def process_links_from_csv(csv_file_path):
         csv_reader = csv.reader(csvfile)
         for row in csv_reader:
             link = row[0]
-            print(link)
             getMembersCount(link, tg_links_output)
 
 
